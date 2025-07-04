@@ -1,30 +1,56 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:training_app/core/logic/change_theme_cubit/change_theme_cubit.dart';
-import 'package:training_app/features/home/ui/home_screen.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
-void main() {
-  runApp(const MyApp());
+import 'core/functions/get_initial_app_settings.dart';
+import 'core/logic/change_language_cubit/change_language_cubit.dart';
+import 'core/logic/change_theme_cubit/change_theme_cubit.dart';
+import 'features/home/ui/home_screen.dart';
+import 'generated/l10n.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final settings = await getInitialAppSettings();
+  runApp(MyApp(initialTheme: settings.theme, initialLanguage: settings.locale));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final ThemeData initialTheme;
+  final Locale initialLanguage;
+  const MyApp({
+    super.key,
+    required this.initialTheme,
+    required this.initialLanguage,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => ChangeThemeCubit(),
-      child: BlocBuilder<ChangeThemeCubit, ThemeData>(
-        builder: (context, state) {
-          return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            title: 'Training App',
-            theme: state,
-            home: const HomeScreen(),
-            themeAnimationCurve: Curves.easeInOut,
-            themeAnimationDuration: const Duration(
-              milliseconds: 800,
-            ),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => ChangeThemeCubit(initialTheme)),
+        BlocProvider(create: (context) => ChangeLanguageCubit(initialLanguage)),
+      ],
+      child: BlocBuilder<ChangeLanguageCubit, Locale>(
+        builder: (context, language) {
+          return BlocBuilder<ChangeThemeCubit, ThemeData>(
+            builder: (context, theme) {
+              return MaterialApp(
+                debugShowCheckedModeBanner: false,
+                title: 'Training App',
+                home: const HomeScreen(),
+                theme: theme,
+                themeAnimationCurve: Curves.easeInOut,
+                themeAnimationDuration: const Duration(milliseconds: 500),
+                localizationsDelegates: const [
+                  S.delegate,
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                ],
+                supportedLocales: S.delegate.supportedLocales,
+                locale: language,
+              );
+            },
           );
         },
       ),

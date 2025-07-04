@@ -4,14 +4,18 @@ import 'package:training_app/core/themes/app_themes.dart';
 
 import '../../../../core/logic/change_theme_cubit/change_theme_cubit.dart';
 
-class CustomToggleButton extends StatelessWidget {
-  const CustomToggleButton({super.key});
+class ThemeToggleButton extends StatelessWidget {
+  const ThemeToggleButton({super.key});
 
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
       onPressed: () {
-        context.read<ChangeThemeCubit>().toggleTheme();
+        final currentTheme = context.read<ChangeThemeCubit>().state;
+        final newTheme = currentTheme == AppThemes.getLightTheme()
+            ? AppThemes.getDarkTheme()
+            : AppThemes.getLightTheme();
+        context.read<ChangeThemeCubit>().toggleTheme(newTheme);
       },
       child: BlocBuilder<ChangeThemeCubit, ThemeData>(
         builder: (context, state) {

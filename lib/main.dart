@@ -17,9 +17,14 @@ class MyApp extends StatelessWidget {
       child: BlocBuilder<ChangeThemeCubit, ThemeData>(
         builder: (context, state) {
           return MaterialApp(
+            debugShowCheckedModeBanner: false,
             title: 'Training App',
             theme: state,
             home: const HomeScreen(),
+            themeAnimationCurve: Curves.easeInOut,
+            themeAnimationDuration: const Duration(
+              milliseconds: 800,
+            ),
           );
         },
       ),

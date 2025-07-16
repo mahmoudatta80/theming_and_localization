@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:training_app/core/themes/app_themes.dart';
+import 'package:training_app/core/utils/app_themes.dart';
 
 import '../../../../core/logic/change_theme_cubit/change_theme_cubit.dart';
 

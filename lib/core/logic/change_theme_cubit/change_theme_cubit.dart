@@ -6,11 +6,25 @@ import 'package:training_app/core/utils/app_constants.dart';
 
 class ChangeThemeCubit extends Cubit<ThemeData> {
   final ThemeData initialTheme;
-  ChangeThemeCubit(this.initialTheme) : super(initialTheme);
+  ChangeThemeCubit(this.initialTheme) : super(initialTheme) {
+    WidgetsBinding.instance.platformDispatcher.onPlatformBrightnessChanged =
+        () {
+          setDeviceTheme();
+        };
+  }
 
   void toggleTheme(ThemeData theme) {
     emit(theme);
     _cacheTheme(theme);
+  }
+
+  void setDeviceTheme() {
+    final deviceBrightness =
+        WidgetsBinding.instance.platformDispatcher.platformBrightness;
+    final deviceTheme = deviceBrightness == Brightness.dark
+        ? AppThemes.getDarkTheme()
+        : AppThemes.getLightTheme();
+    emit(deviceTheme);
   }
 
   void _cacheTheme(ThemeData theme) async {

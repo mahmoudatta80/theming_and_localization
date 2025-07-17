@@ -1,4 +1,8 @@
 {
     "welcomeToMyHomeScreen": "اهلا بك في الشاشة الرئيسية!",
-    "homeScreen": "الشاشة الرئيسية"
+    "homeScreen": "الشاشة الرئيسية",
+    "toggleLanguage": "تبديل اللغة",
+    "toggleTheme": "تبديل السمة",
+    "setDeviceTheme": "تعيين سمة الجهاز",
+    "setDeviceLanguage": "تعيين لغة الجهاز"
 }

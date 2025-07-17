@@ -6,11 +6,20 @@ import '../../utils/app_constants.dart';
 
 class ChangeLanguageCubit extends Cubit<Locale> {
   final Locale initialLocale;
-  ChangeLanguageCubit(this.initialLocale) : super(initialLocale);
+  ChangeLanguageCubit(this.initialLocale) : super(initialLocale) {
+    WidgetsBinding.instance.platformDispatcher.onLocaleChanged = () {
+      setDeviceLanguage();
+    };
+  }
 
   void toggleLanguage(Locale locale) {
     emit(locale);
     _cacheLanguageCode(locale.languageCode);
+  }
+
+  void setDeviceLanguage() {
+    final deviceLocale = WidgetsBinding.instance.platformDispatcher.locale;
+    emit(deviceLocale);
   }
 
   void _cacheLanguageCode(String languageCode) async {

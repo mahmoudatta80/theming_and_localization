@@ -1,4 +1,8 @@
 {
     "welcomeToMyHomeScreen": "Welcome to my home screen!",
-    "homeScreen": "Home Screen"
+    "homeScreen": "Home Screen",
+    "toggleLanguage": "Toggle Language",
+    "toggleTheme": "Toggle Theme",
+    "setDeviceTheme": "Set Device Theme",
+    "setDeviceLanguage": "Set Device Language"
 }

@@ -6,18 +6,24 @@ import '../utils/app_constants.dart';
 import '../utils/app_languages.dart';
 
 Future<({ThemeData theme, Locale locale})> getInitialAppSettings() async {
+  final deviceLocale = WidgetsBinding.instance.platformDispatcher.locale;
+
+  final deviceBrightness =
+      WidgetsBinding.instance.platformDispatcher.platformBrightness;
+  final isDeviceModeDark = deviceBrightness == Brightness.dark;
+
   await AppSharedPreferences.init();
 
   final isDarkMode =
       await AppSharedPreferences.getData(AppConstants.isDarkModeKey) as bool? ??
-      false;
+      isDeviceModeDark;
   final theme = isDarkMode
       ? AppThemes.getDarkTheme()
       : AppThemes.getLightTheme();
 
   final languageCode =
       await AppSharedPreferences.getData(AppConstants.languageKey) as String? ??
-      'en';
+      deviceLocale.languageCode;
   final locale = languageCode == 'en'
       ? AppLanguages.getEnglishLocale()
       : AppLanguages.getArabicLocale();

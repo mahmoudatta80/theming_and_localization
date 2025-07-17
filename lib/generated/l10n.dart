@@ -69,6 +69,46 @@ class S {
   String get homeScreen {
     return Intl.message('Home Screen', name: 'homeScreen', desc: '', args: []);
   }
+
+  /// `Toggle Language`
+  String get toggleLanguage {
+    return Intl.message(
+      'Toggle Language',
+      name: 'toggleLanguage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Toggle Theme`
+  String get toggleTheme {
+    return Intl.message(
+      'Toggle Theme',
+      name: 'toggleTheme',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Set Device Theme`
+  String get setDeviceTheme {
+    return Intl.message(
+      'Set Device Theme',
+      name: 'setDeviceTheme',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Set Device Language`
+  String get setDeviceLanguage {
+    return Intl.message(
+      'Set Device Language',
+      name: 'setDeviceLanguage',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

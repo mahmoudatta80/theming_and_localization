@@ -23,6 +23,12 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "homeScreen": MessageLookupByLibrary.simpleMessage("الشاشة الرئيسية"),
+    "setDeviceLanguage": MessageLookupByLibrary.simpleMessage(
+      "تعيين لغة الجهاز",
+    ),
+    "setDeviceTheme": MessageLookupByLibrary.simpleMessage("تعيين سمة الجهاز"),
+    "toggleLanguage": MessageLookupByLibrary.simpleMessage("تبديل اللغة"),
+    "toggleTheme": MessageLookupByLibrary.simpleMessage("تبديل السمة"),
     "welcomeToMyHomeScreen": MessageLookupByLibrary.simpleMessage(
       "اهلا بك في الشاشة الرئيسية!",
     ),

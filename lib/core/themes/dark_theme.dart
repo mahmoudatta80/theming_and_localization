@@ -25,4 +25,12 @@ final ThemeData darkTheme = ThemeData(
     backgroundColor: AppColors.darkPrimary,
     foregroundColor: AppColors.darkOnPrimary,
   ),
+
+  textButtonTheme: TextButtonThemeData(
+    style: TextButton.styleFrom(
+      backgroundColor: AppColors.darkPrimary,
+      foregroundColor: AppColors.darkOnPrimary,
+      maximumSize: const Size(double.infinity, 40),
+    ),
+  ),
 );

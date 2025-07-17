@@ -23,6 +23,12 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "homeScreen": MessageLookupByLibrary.simpleMessage("Home Screen"),
+    "setDeviceLanguage": MessageLookupByLibrary.simpleMessage(
+      "Set Device Language",
+    ),
+    "setDeviceTheme": MessageLookupByLibrary.simpleMessage("Set Device Theme"),
+    "toggleLanguage": MessageLookupByLibrary.simpleMessage("Toggle Language"),
+    "toggleTheme": MessageLookupByLibrary.simpleMessage("Toggle Theme"),
     "welcomeToMyHomeScreen": MessageLookupByLibrary.simpleMessage(
       "Welcome to my home screen!",
     ),

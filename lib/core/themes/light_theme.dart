@@ -25,4 +25,11 @@ final ThemeData lightTheme = ThemeData(
     backgroundColor: AppColors.primary,
     foregroundColor: AppColors.onPrimary,
   ),
+  textButtonTheme: TextButtonThemeData(
+    style: TextButton.styleFrom(
+      backgroundColor: AppColors.primary,
+      foregroundColor: AppColors.onPrimary,
+      maximumSize: const Size(double.infinity, 40),
+    ),
+  ),
 );

@@ -8,7 +8,9 @@ class ChangeLanguageCubit extends Cubit<Locale> {
   final Locale initialLocale;
   ChangeLanguageCubit(this.initialLocale) : super(initialLocale) {
     WidgetsBinding.instance.platformDispatcher.onLocaleChanged = () {
-      setDeviceLanguage();
+      if (AppSharedPreferences.getData(AppConstants.languageKey) == null) {
+        setDeviceLanguage();
+      }
     };
   }
 

@@ -26,7 +26,7 @@ abstract class AppSharedPreferences {
     }
   }
 
-  static Future<dynamic> getData(String key) async {
+  static Object? getData(String key) {
     return _preferences.get(key);
   }
 

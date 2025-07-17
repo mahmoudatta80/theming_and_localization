@@ -15,14 +15,14 @@ Future<({ThemeData theme, Locale locale})> getInitialAppSettings() async {
   await AppSharedPreferences.init();
 
   final isDarkMode =
-      await AppSharedPreferences.getData(AppConstants.isDarkModeKey) as bool? ??
+      AppSharedPreferences.getData(AppConstants.isDarkModeKey) as bool? ??
       isDeviceModeDark;
   final theme = isDarkMode
       ? AppThemes.getDarkTheme()
       : AppThemes.getLightTheme();
 
   final languageCode =
-      await AppSharedPreferences.getData(AppConstants.languageKey) as String? ??
+      AppSharedPreferences.getData(AppConstants.languageKey) as String? ??
       deviceLocale.languageCode;
   final locale = languageCode == 'en'
       ? AppLanguages.getEnglishLocale()

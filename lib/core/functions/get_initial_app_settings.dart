@@ -16,10 +16,11 @@ Future<({ThemeData theme, Locale locale})> getInitialAppSettings() async {
       : AppThemes.getLightTheme();
 
   final languageCode =
-      await AppSharedPreferences.getData(AppConstants.languageKey) as String?;
-  final locale = languageCode == 'ar'
-      ? AppLanguages.getArabicLocale()
-      : AppLanguages.getEnglishLocale();
+      await AppSharedPreferences.getData(AppConstants.languageKey) as String? ??
+      'en';
+  final locale = languageCode == 'en'
+      ? AppLanguages.getEnglishLocale()
+      : AppLanguages.getArabicLocale();
 
   return (theme: theme, locale: locale);
 }
